@@ -1,4 +1,4 @@
-# Exercises
+# Exercises (pages 19)
 
 ## Q1
 For an array containing 100 elements:
