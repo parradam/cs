@@ -1,16 +1,18 @@
-# Exercises (page 34)
+# Why algorithms matter
 
-## Q1
+## Exercises (page 34)
+
+### Q1
 How many steps to perform a linear search for the number `8` in the ordered array `[2, 4, 6, 8, 10, 12, 13]`?
 
 4 steps: search is left to right
 
-## Q2
+### Q2
 How many steps would binary search take for the previous example?
 
 1 step: the array is bisected and the midpoint is `8` on the first inspection
 
-## Q3
+### Q3
 What is the maximum number of steps it wold take to perform a binary search on an array of size 100 000?
 
 Step 1: 50 000 left

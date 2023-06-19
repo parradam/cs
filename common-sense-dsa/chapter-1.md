@@ -1,6 +1,8 @@
-# Exercises (pages 19)
+# Why data structures matter
 
-## Q1
+## Exercises (page 19)
+
+### Q1
 For an array containing 100 elements:
 1. Reading: 1 step
 2. Seaching for a value not in the array: N (100) steps
@@ -9,7 +11,7 @@ For an array containing 100 elements:
 5. Deletion at the beginning of the array: N (100) steps
 6. Deletion at the end of the array: 1 step
 
-## Q2
+### Q2
 For an array-based set containing 100 elements:
 1. Reading: 1 step
 2. Seaching for a value not in the set: N (100) steps
@@ -18,7 +20,7 @@ For an array-based set containing 100 elements:
 5. Deletion at the beginning of the set: N (100) steps
 6. Deletion at the end of the set: 1 step
 
-## Q3
+### Q3
 Normally the search operation in an array looks for the first instance of a given value (e.g. "apple"). How many steps would it take to find all of the "apples" in terms of N?
 
 N steps: every item in the array needs to be checked.
