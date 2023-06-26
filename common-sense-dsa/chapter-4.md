@@ -3,10 +3,8 @@
 ## Notes
 Bubble sort: `O(N^2)` (quadratic time)
 
-
-
 ## References
-
+N/A
 
 ## Exercises (page 60)
 
