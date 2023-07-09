@@ -11,7 +11,7 @@ Even when two algorithms are described the same way in terms of big O, one can b
 - When the final pass-through starts at the last index, the array is sorted
 
 Selection sort: `O(N^2)` (quadratic time)
-**Note:** selection sort only requires 0 or 1 comparisons per pass-through, making it much faster than bubble sort in practice, which requires up to the same number of swaps as comparisons.
+**Note:** selection sort only requires 0 or 1 swaps per pass-through, making it much faster than bubble sort in practice, which requires up to the same number of swaps as comparisons.
 
 Big O ignores constants.
 
