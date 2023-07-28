@@ -1,22 +1,22 @@
 # A function that returns the intersection of two arrays
 
-def find_intersections(firstArray, secondArray):
-    if len(firstArray) > len(secondArray):
-        largestArray = firstArray
-        smallestArray = secondArray
+def find_intersections(first_array, second_array):
+    if len(first_array) > len(second_array):
+        largest_array = first_array
+        smallest_array = second_array
     else:
-        largestArray = secondArray
-        smallestArray = firstArray
+        largest_array = second_array
+        smallest_array = first_array
     
-    largestArrayDict = {}
+    largest_array_dict = {}
 
-    for item in largestArray:
-        largestArrayDict[item] = True
+    for item in largest_array:
+        largest_array_dict[item] = True
     
     intersections = []
 
-    for item in smallestArray:
-        if (largestArrayDict.get(item, False)):
+    for item in smallest_array:
+        if largest_array_dict.get(item, False):
             intersections.append(item)
     
     return intersections

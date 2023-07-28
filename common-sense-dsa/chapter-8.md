@@ -34,6 +34,7 @@ Refer to `chapter-8-intersections.py` for a working example. The time complexity
 Refer to `chapter-8-duplicates.py` for a working example. In the worst case, where the last element of the array contains the duplicate value, `N` steps will be required. The algorithm therefore has a time complexity of `O(N)`.
 
 ### Q3
-
+Refer to `chapter-8-missing-letter.py` for a working example. `N` steps will be required to create the dictionary, followed by up to 26 steps to check for the missing letter. The algorithm therefore has a time complexity of `O(N)`.
 
 ### Q4
+Refer to `chapter-8-nonduplicated-letter.py` for a working example. `N` steps will be required to create the dictionary with the counts, followed by up to `N` steps to check for the nonduplicated letter. The algorithm therefore has a time complexity of `O(N)`.

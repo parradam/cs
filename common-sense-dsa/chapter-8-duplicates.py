@@ -3,13 +3,13 @@
 # However, None will be returned in the event that no duplicates are found
 
 def find_duplicate(str):    
-    arrayDict = {}
+    array_dict = {}
 
     for item in str:
-        if (arrayDict.get(item, False)):
+        if array_dict.get(item, False):
             return item
         else:
-            arrayDict[item] = True
+            array_dict[item] = True
     
     return None
 
