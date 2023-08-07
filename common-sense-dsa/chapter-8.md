@@ -1,12 +1,12 @@
 # Blazing fast lookup with hash tables
 
 ## Notes
-Hash tables provide `O(1)` (constant time) lookups over `O(N)` (linear time), for example.
+Hash tables provide `O(1)` (constant time) lookups instead of `O(N)` (linear time) for a linear search, for example.
 
 The key parts consist of a **key**, **value**, and **hash function**. Often the hash function is abstracted by the programming language to maximise efficiency.
 
 Example usage:
-1. A dictionary (i.e. hash table) mapping HTTP status codes to their meanings, eliminating conditionl logic
+1. A dictionary (i.e. hash table) mapping HTTP status codes to their meanings, eliminating conditional logic
 2. An array of hash tables, with each hash table holding attribute names (e.g. colour) as keys and attribute values (e.g. blue) as values
 3. For unpaired data (i.e. an array of elements), a hash table can be produced:
    ```ruby

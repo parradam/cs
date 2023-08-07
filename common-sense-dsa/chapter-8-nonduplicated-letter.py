@@ -1,4 +1,4 @@
-# A function that returns the first nonduplicated character in a string
+# A function that returns the first nonduplicated letter in a string
 
 def find_nonduplicated_letter(str):    
     letter_count = {}
