@@ -1,5 +1,4 @@
 def greatest_number_slowest(array):
-    max = array[0]  # initialise with some value
     for i in range(len(array)):
         is_i_greatest = True
         for j in range(len(array)):
