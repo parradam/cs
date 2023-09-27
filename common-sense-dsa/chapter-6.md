@@ -3,6 +3,7 @@
 ## Notes
 
 ### Insertion sort
+
 - First pass-through
   - Starting from index 1
   - Copy value at index 1 to temporary variable (*removal*)
@@ -29,18 +30,20 @@ Insertion sort: `O(N^2)` (quadratic time)
 
 ## References
 
-
 ## Exercises (page 93)
 
 ### Q1
+
 The efficiency of a an algorithm that takes `3N^2 + 2N + 1` steps in terms of big O notation is `O(N^2)`.
 
 ### Q2
+
 The efficiency of a an algorithm that takes `N + log N` steps in terms of big O notation is `O(N)`.
 
 ### Q3
 
 #### Example
+
 ```js
 function twoSum(array) {
     for (let i = 0; i < array.length; i++) {
@@ -55,20 +58,25 @@ function twoSum(array) {
 ```
 
 #### Best-case
+
 The first and second elements sum to 10, requiring 2 comparisons (as the first will compare the first two elements and fail the condition `i !== j`).
 
 #### Average-case
+
 Two elements in the middle of the array sum to 10. This will require `N/2` steps for the outer loop, but the inner loop will have taken `N` steps in the preceding loops, yielding `(N^2)/2` steps.
 
 #### Worst-case
+
 If the last two elements sum to 10, approximately `N^2` (in reality, `N^2 - 1`) comparisons will be made.
 
 #### Big O notation
+
 The time complexity in terms of big O notation is `O(N^2)`.
 
 ### Q4
 
 #### Example
+
 ```js
 function containsX(string) {
     foundX = false;
@@ -83,9 +91,11 @@ function containsX(string) {
 ```
 
 #### Big O notation
+
 The time complexity in terms of big O notation is `O(N)`. There are up to `N` comparisons.
 
 #### Improving the efficiency
+
 For best- and average-case scenarios, the algorithm could be improved by adding a `break` statement should `X` be found. This ends the comparisons early and prevents the algorithm from always performing `N^2` comparisons.
 
 ```js

@@ -3,12 +3,14 @@
 ## Notes
 
 ### Linked lists
+
 - Data structure that represents a list of items
 - Data is not stored contiguously
 - Each node contains data and a reference to the memory address of the next node in the list (the *link*)
 - The final node's link is `null` which indicates the end of the linked list
 
 #### Implementing a linked list
+
 ```ruby
 class Node
     attr_accessor :data, :next_node
@@ -44,6 +46,7 @@ list = LinkedList.new(node_1)
 We only have immediate access to the *first node* of a linked list.
 
 #### Reading
+
 It takes `N` steps to read the last (`N`th) node in a linked list. Therefore the time complexity is `O(N)`.
 
 ```ruby
@@ -70,6 +73,7 @@ list.read(3)
 ```
 
 #### Searching
+
 Search speed is also `O(N)` as the links have to be followed.
 
 ```ruby
@@ -99,7 +103,9 @@ list.index_of("time")
 ```
 
 #### Insertion
+
 Linked lists have an advantage over arrays in some situations:
+
 - In the worst case, arrays have a time complexity of `O(N)` when inserting data into index 0
 - For linked lists, insertion at the beginning takes one step, yielding a time complexity of `O(1)` - a new node is created and the link is pointed to the original first node
 - For linked lists, insertion within a list requires a time complexity of `O(N)`, as the list must be traversed to locate the node prior to where the insertion will occur (requiring `N + 1` steps; the traversal (`N`) and the creation of the node (`1`))
@@ -144,6 +150,7 @@ list.insert_at_index(3, "purple")
 ```
 
 #### Deletion
+
 - Deletion of a node from the beginning of a linked list takes one step; changing the `first_node` to point to what was the second node in the list: `list.first_node = node_2`
 - For an array, all elements would have to be shifted, with a time compelxity of `O(N)`
 - Deletion of a node from the end of a linked list would require `N` steps to traverse the list, and then `1` step make its link `null`
@@ -180,6 +187,7 @@ end
 ```
 
 #### Efficiency of linked list operations
+
 | Operation | Array | Linked list |
 |-----------|-------|-------------|
 | Reading | `O(1)` | `O(N)` |
@@ -187,8 +195,8 @@ end
 | Insertion | `O(N)` (`O(1)` at end) | `O(N)` (`O(1)` at beginning) |
 | Deletion | `O(N)` (`O(1)` at end) | `O(N)` (`O(1)` at beginning) |
 
-
 ### Doubly linked lists
+
 - A linked list which has two links: one to the next node, and one to the previous node
 - The first and last nodes are accessible
 
@@ -212,6 +220,7 @@ end
 ```
 
 #### Insertion
+
 ```ruby
 # method in DoublyLinkedList class
 def insert_at_end(value)
@@ -231,6 +240,7 @@ end
 ```
 
 #### Queues as doubly linked lists
+
 As insertions and deletions have a time complexity of `O(1)` on both sides of a doubly linked list, it is an ideal data structure for a queue.
 
 ```ruby
@@ -298,10 +308,12 @@ end
 
 ## References
 
+None.
 
 ## Exercises (page 244)
 
 ### Q1
+
 Adding a method to the `LinkedList` class that prints all of the elements in the list:
 
 ```ruby
@@ -327,6 +339,7 @@ list.print_all
 ```
 
 ### Q2
+
 Adding a method to the `DoublyLinkedList` class that prints all of the elements in the list in reverse:
 
 ```ruby
@@ -374,6 +387,7 @@ list.print_all_in_reverse
 ```
 
 ### Q3
+
 Adding a method to the `LinkedList` class that returns the last element from the list:
 
 ```ruby
@@ -400,6 +414,7 @@ last_element = list.get_last
 ```
 
 ### Q4
+
 Adding a method to the `LinkedList` class that reverses the list:
 
 ```ruby

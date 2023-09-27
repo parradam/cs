@@ -3,11 +3,13 @@
 ## Notes
 
 ### Quicksort
+
 - Partition the array (puts the pivot in the correct place)
 - Treat the subarrays left and right of the pivot as their own arrays. This is done recursively
 - For a subarray with zero or one elements, the base case is to do nothing
 
 #### Partitioning
+
 - Left pointer is assigned to the leftmost value, right pointer is assigned to the rightmost value **excluding** the pivot.
 - Left pointer moves one cell to the right until the value is >= the pivot, then stops
 - Right pointer moves one cell to the left until the value is <= the pivot, or until the start of the array
@@ -22,6 +24,7 @@ Quicksort in the worst case: `O(N^2)`
 **Note:** if the pivot is always on the end of a subarray, `N` partitions would be required, each with `N/2` comparisons (`(N^2)/2` steps).
 
 ### Quickselect
+
 This algorithm uses partitioning to find the nth lowest or highest value in an unordered array. The advantage is that the whole array does not need to be sorted first.
 
 - Partition the array (puts the pivot in the correct place)
@@ -33,20 +36,22 @@ Quickselect: `O(N)`
 
 ## References
 
-
 ## Exercises (page 224)
 
 ### Q1
+
 Refer to `chapter-13-three-product.py` for a working example.
 
 Assuming that Python uses a quicksort algorithm, the efficiency of this method will be `O(N log N)`.
 
 ### Q2
+
 Refer to `chapter-13-find-missing-number.py` for a working example.
 
 Assuming that Python uses a quicksort algorithm, the efficiency of this method will be `O(N log N)`.
 
 ### Q3
+
 Refer to `chapter-13-greatest-number.py` for a working example.
 
 `greatest_number_slowest` uses nested `for` loops and has a time complexity of `O(N^2)`.
