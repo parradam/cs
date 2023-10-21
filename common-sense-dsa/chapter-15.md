@@ -69,7 +69,16 @@ A search of a balanced tree would take `O(log N)` (typical scenario). This is us
     - To find the successor node, visit the right child of the deleted node, than the left child of each of the children until there are no more left children; the last value is the successor node
       - If this successor node has a right child, this should become the left child of the successor node's former parent (i.e. the former grandparent)
 
-Deletion from a binary search tree is `O(log N)`, as opposed to `O(N)` from an array (due to the shifting required).
+Deletion from a binary search tree is `O(log N)` (searching plus extra steps for hanging children), as opposed to `O(N)` from an array (due to the shifting required).
+
+#### Tree traversal
+
+- To visit nodes in order, a recursive function can be used:
+  - Base case: no left child, do nothing and return
+  - Call left child with recursive function
+  - Do something with parent node (e.g. print value)
+  - Call right child with recursive function
+- Tree traversal is `O(N)` as every node is visited
 
 ## References
 
@@ -77,8 +86,84 @@ Deletion from a binary search tree is `O(log N)`, as opposed to `O(N)` from an a
 
 ### Q1
 
+Inserting the numbers `[1, 5, 9, 2, 4, 10, 6, 3, 8]` in order would create this binary search tree:
+
+```text
+    1
+     \
+      5
+    /   \
+   /     \
+  2       9
+   \     / \
+    4   6  10
+   /     \
+  3       8
+```
+
 ### Q2
+
+If a well-balanced binary search tree, contains 1 000 values, it would take up to $log_2(10)$ steps:
+
+```math
+log_2(1000) = 9.966 \approx 10\,\text{steps}
+```
 
 ### Q3
 
+This function traverses the rightmost nodes until the largest value is found (when there are no more right children to traverse).
+
+```python
+def find_greatest_value(node):
+    if node.rightChild:
+        return find_greatest_value(node.rightChild)
+    return node.value
+```
+
 ### Q4
+
+```text
+       M
+      / \
+     /   \
+    /     \
+   G       R
+  / \     / \
+ /   \   /   \
+A     L  P    T
+```
+
+For an inorder traversal, the order was `[A, G, L, M, P, R, T]`.
+
+```python
+def inorder_traversal(node):
+    if node is None:
+        return
+    inorder_traversal(node.leftChild)
+    print(node.value)
+    inorder_traversal(node.rightChild)
+```
+
+For a preorder traversal, the order would be `[M, G, A, L, R, P, T]`.
+
+```python
+def preorder_traversal(node):
+    if node is None:
+        return
+    print(node.value)
+    preorder_traversal(node.leftChild)
+    preorder_traversal(node.rightChild)
+```
+
+### Q5
+
+For a postorder traversal, the order would be `[A, L, G, P, T, R, M]`.
+
+```python
+def postorder_traversal(node):
+    if node is None:
+        return
+    postorder_traversal(node.leftChild)
+    postorder_traversal(node.rightChild)
+    print(node.value)
+```
