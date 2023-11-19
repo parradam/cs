@@ -171,6 +171,8 @@ After deleting the root node, `10`:
 
 ### Q3
 
+Creating a brand new heap by inserting the following numbers in this order: `[55, 22, 34, 10, 2, 99, 68]`. Then popping them one at a time and inserting them into a new array.
+
 Refer to the heapsort explanation in the notes above.
 
 The values are sorted in perfect descending order.
