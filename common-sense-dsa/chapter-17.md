@@ -4,7 +4,7 @@
 
 ### Tries
 
-- A trie is a collection of nodes that point to other notes
+- A trie is a collection of nodes that point to other nodes
 - It is not a binary tree, as a trie node can have any number of child nodes
 - Can be implemented using multiple hash tables
   - A character (such as `*`) can be used to indicate that the end of a word has been reached; this will point to `None` (i.e. there are no further child nodes)
@@ -28,10 +28,6 @@
     - If not (search string does not exist) create such a child node and update `currentNode` to be this node and move to next iteration
     - If it does, update `currentNode` to be that child node and move to next iteration
 - At the end of the iteration, add a `*` child to indicate that the word is complete
-
-#### Using a Trie for autocomplete
-
--
 
 #### Implementation
 
