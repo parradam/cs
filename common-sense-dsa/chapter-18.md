@@ -124,7 +124,7 @@ Alice --> Elaine --> Derek --> Gina --> Irina
 
 The *depth-first search* (DFS) is recursive. The algorithm is:
 
-1. Start at any random vertex in the graph
+1. Start at any vertex in the graph
 2. Add the current vertex to the hashtable (which records all visited vertices)
 3. Iterate through the adjacent vertices of the current vertex
    1. If the adjacent vertex has already been visited, ignore it (this prevents an infinite loop when the graph has cycles)
@@ -183,7 +183,80 @@ end
 
 ### Breadth-first search
 
-To complete from here onwards.
+The *breath-first search* (BFS) uses a queue (a FIFO data structure) and is **not** recursive. The algorithm is:
+
+1. Start at any vertex in the graph (the starting vertex)
+2. Add the starting vertex to the hashtable (which records all visited vertices)
+3. Add the starting vertex to a queue
+4. Start a loop that runs while the queue isn't empty
+   1. Within this loop, remove the first vertex from the queue (the current vertex)
+   2. Iterate over all of the adjacent vertices of the current vertex
+      1. If the adjacent vertex has already been visited, ignore it
+      2. If the adjacent vertex has not already been visited, mark it as visited (add to the hashtable) and to the queue
+5. Repeat until the queue is empty
+
+#### Code implementation: traversal
+
+```ruby
+def bfs_traverse(starting_vertex)
+  queue = Queue.new
+
+  visited_vertices = {}
+  visited_vertices[starting_vertex.value] = true
+  queue.enqueue(starting_vertex)
+
+  # While queue is not empty
+  while queue.read
+    # Remove first vertex, make it current_vertex
+    current_vertex = queue.dequeue
+
+    # Print current_vertex value
+    puts current_vertex.value
+
+    # Iterate over adjacent vertices
+    current_vertex.adjacent_vertices.each do |adjacent_vertex|
+      # If adjacent_vertex has not yet been visited
+      if !visited_vertices[adjacent_vertex.value]
+        # Mark adjacent_vertex as visited
+        visited_vertices[adjacent_vertex.value] = true
+
+        # Add adjacent vertex to queue
+        queue.enqueue(adjacent_vertex)
+      end
+    end
+  end
+end
+```
+
+### DFS vs BFS
+
+- DFS will go as far away as possible before returning
+- BFS will start with immediate connections and then spiral out
+- Choosing the right graph search can find the vertex being searched for sooner in some cases
+
+### Efficiency of graph search
+
+- Efficiency depends on the number of vertices, *V* and edges, *E*, in the graph
+- Graph search has a time complexity of `O(V + E)` - but *E* only counts the number of edges once, whereas in reality they can be touched more than once
+
+In the example below, the number of steps is:
+
+- 5 vertices
+- V: 4 neighbours
+- W: 1 neighbour
+- X: 1 neighbour
+- Y: 1 neighbour
+- Z: 1 neighbour
+  
+Total: `5 + 8 = 13`.
+
+```mermaid
+flowchart TD
+    V --- W
+    V --- X
+    V --- Y
+    V --- Z
+```
 
 ## References
 
