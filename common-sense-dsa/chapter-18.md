@@ -258,6 +258,74 @@ flowchart TD
     V --- Z
 ```
 
+### Weighted graphs
+
+- *Weighted graphs* add information to the edges of the graph (e.g. distances, costs)
+- They can be directional (see below)
+
+```mermaid
+flowchart LR
+  A -- 20 --> B
+  B -- 30 --> A
+```
+
+#### Code implementation: weighted graphs
+
+This uses a hashtable rather than an array to store the adjacent vertices and values as key-value pairs.
+
+```ruby
+class WeightedGraphVertex
+  attr_accessor :value, :adjacent_vertices
+
+  def initialize(value)
+    @value = value
+    @adajcent_vertices = {}
+  end
+
+  def add_adjacent_vertex(vertex, weight)
+    @adjacent_vertices[vertex] = weight
+  end
+end
+
+# Usage
+lon = WeightedGraphVertex.new("London")
+mil = WeightedGraphVertex.new("Milan")
+
+lon.add_adjacent_vertex(mil, 100)
+mil.add_adjacent_vertex(lon, 200)
+```
+
+#### Shortest path problem
+
+In the following example, the shortest path is the cheapest price to fly from Atlanta to El Paso (where the "paths" are prices for each flight). There is no direct flight.
+
+- Atlanta-Denver-El Paso = $300
+- Atlanta-Denver-Chicago-El Paso = $280
+
+```mermaid
+flowchart LR
+  ep[El Paso]
+
+  Boston -- $180 --> Denver
+  Boston -- $120 --> Chicago
+  Denver -- $40 --> Chicago
+  Atlanta -- $100 --> Boston
+  Atlanta -- $160 --> Denver
+  Chicago -- $80 --> ep
+  Denver -- $140 --> ep
+  ep -- $100 --> Boston
+```
+
+#### Dijkstra's algorithm
+
+1. Visit starting city (make it the current city)
+2. Check prices from current city to adjacent cities
+   1. If the price from the current city to the adjacent city isn't recorded, or is cheaper than the existing price:
+      1. Update the `cheapest_prices_table`
+      2. Update the `cheapest_previous_stopover_city_table` where the adjacent city is the key and the current city is the value
+3. Visit the unvisitd city with the cheapest price from the starting city (make it the current city)
+4. Repeat steps 2 to 4 until every known city has been visited
+
 ## References
 
 ## Exercises (page 384)
