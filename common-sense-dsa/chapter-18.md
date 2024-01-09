@@ -323,8 +323,118 @@ flowchart LR
    1. If the price from the current city to the adjacent city isn't recorded, or is cheaper than the existing price:
       1. Update the `cheapest_prices_table`
       2. Update the `cheapest_previous_stopover_city_table` where the adjacent city is the key and the current city is the value
-3. Visit the unvisitd city with the cheapest price from the starting city (make it the current city)
+3. Visit the unvisited city with the cheapest price from the starting city (make it the current city)
 4. Repeat steps 2 to 4 until every known city has been visited
+
+##### Code implementation: Dijkstra's algorithm
+
+```ruby
+class City
+  attr_accessor :name, :routes
+
+  def initialize(name)
+    @name = name
+    @routes = {}
+  end
+
+  def add_route(city, price)
+    @routes[city] = price
+  end
+end
+
+# Setting up cities
+atlanta = City.new("Atlanta")
+boston = City.new("Boston")
+chicago = City.new("Chicago")
+denver = City.new("Denver")
+el_paso = City.new("El Paso")
+
+# Adding routes and prices
+atlanta.add_route(boston, 100)
+atlanta.add_route(denver, 160)
+boston.add_route(chicago, 120)
+boston.add_route(denver, 100)
+chicago.add_route(el_paso, 80)
+denver.add_route(chicago, 40)
+denver.add_route(el_paso, 140)
+
+# Find the shortest path between two City instances
+def dijkstra_shortest_path(starting_city, final_destination)
+  cheapest_prices_table = {}
+  cheapest_previous_stopover_city_table = {}
+
+  # Track known but unvisited cities
+  unvisited_cities = []
+
+  # Track known and visited cities - hashtable as efficient lookups are required
+  visited_cities = {}
+
+  # Add starting city with value of 0 (already there)
+  cheapest_prices_table[starting_city.name] = 0
+
+  current_city = starting_city
+
+  # Loop as long as there are cities we haven't visited yet
+  while current_city
+    # Add current_city's name to visited_cities, remove from unvisited_cities
+    visited_cities[current_city.name] = true
+    unvisited_cities.delete(current_city)
+
+    # Iterate over current_city's adjacent cities
+    current_city.routes.each do |adjacent_city, price|
+      # If a new city has been discovered, add to the list of unvisited_cities
+      unvisited_cities << adjacent_city unless visited_cities[adjacent_city.name]
+
+      # Calculate price of getting from *starting* city to *adjacent* city
+      # using *current* city as the second-to-last stop
+      price_through_current_city = cheapest_prices_table[current_city.name] + price
+
+      # If the price from the *starting* city to the *adjacent* city is the cheapest so far
+      if !cheapest_prices_table[adjacent_city.name] ||
+        price_through_current_city < cheapest_prices_table[adjacent_city.name]
+
+        # Then update tables
+        cheapest_prices_table[adjacent_city.name] = price_through_current_city
+        cheapest_previous_stopover_city_table[adjacent_city.name] = current_city.name
+      end
+    end
+
+    # Visit next *unvisited* city - choose cheapest from *starting* city
+    current_city = unvisited_cities.min do |city|
+      cheapest_prices_table[city.name]
+    end
+  end
+
+  # At this point, cheapest_prices_table contains the cheapest prices from
+  # the *starting* city to each other city. Now to build the shortest path
+  shortest_path = []
+
+  # Work backwards from *final* destination
+  current_city_name = final_destination.name
+
+  # Loop until *starting* city is reached
+  while current_city_name != starting_city.name
+    # Add each current_city name to the array
+    shortest_path << current_city_name
+
+    # Use cheapest_previous_stopover_city_table to work backwards
+    current_city_name = cheapest_previous_stopover_city_table[current_city_name]
+  end
+
+  # Add starting city to shortest path
+  shortest_path << starting_city.name
+  
+  # Reverse array and return
+  return shortest_path.reverse
+end
+```
+
+##### Efficiency
+
+- The precise implementation of Dijkstra's algorithm has an impact on the efficiency (e.g. a priority queue could be used instead of an array for `unvisited_cities`)
+- With the above implementation, using an array for `unvisited_cities`, the worst-case scenario is every vertex being linked to every vertex, requiring `V * V` steps
+- The time complexity is therefore `O(V^2)`
+- This algorithm is more efficient than the alternative, which would be to find every possible path and then find the fastest
 
 ## References
 
