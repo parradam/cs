@@ -442,10 +442,62 @@ end
 
 ### Q1
 
+If a user browses for nails, the recommended products will be:
+
+- hammer
+- nail polish
+- needles
+- pins
+
 ### Q2
+
+Performing a depth-first search on the graph, starting with vertex "A", and traversing multiple adjacent vertices in alphabetical order, the order of traversal will be: A, B, E, J, F, O, C, G, K, D, H, L, M, I, N, P.
 
 ### Q3
 
+Performing a breadth-first search on the graph, starting with vertex "A", and traversing multiple adjacent vertices in alphabetical order, the order of traversal will be: A, B, C, D, E, F, G, H, I, K, L, M, N, O, P.
+
 ### Q4
 
+Modify the BFS traversal to search for the value of a vertex (similar to the DFS seach above).
+
+```ruby
+def bfs_search(starting_vertex, search_value)
+  queue = Queue.new
+
+  visited_vertices = {}
+  visited_vertices[starting_vertex.value] = true
+  queue.enqueue(starting_vertex)
+
+  # While queue is not empty
+  while queue.read
+    # Remove first vertex, make it current_vertex
+    current_vertex = queue.dequeue
+
+    # If adjacent vertex matches search_value, return it
+    return current_vertex if current_vertex.value == search_value
+
+    # Print current_vertex value
+    puts current_vertex.value
+
+    # Iterate over adjacent vertices
+    current_vertex.adjacent_vertices.each do |adjacent_vertex|
+      # If adjacent_vertex has not yet been visited
+      if !visited_vertices[adjacent_vertex.value]
+
+        # Mark adjacent_vertex as visited
+        visited_vertices[adjacent_vertex.value] = true
+
+        # Add adjacent vertex to queue
+        queue.enqueue(adjacent_vertex)
+      end
+    end
+  end
+
+  return nil
+end
+```
+
 ### Q5
+
+Refer to `chapter-18-degrees-of-separation.py` for a working example.
