@@ -443,12 +443,49 @@ end
 
 ### Q1
 
+Refer to `chapter-20-common-names.py` for a working example.
+
+Although a nested loop would have worked (with time complexity `O(N * M)`) the solution runs in `O(N + M)` as only one iteration is required for each array.
+
 ### Q2
+
+Refer to `chapter-20-missing-integer.py` for two working examples. The second is the official solution.
+
+The second solution is the simplest, but both require approximately `2N` steps, yielding a time complexity of `O(N)`.
 
 ### Q3
 
+Refer to `chapter-20-find-greatest-profit.py` for a working example.
+
+The solution uses a greedy algorithm, and as all prices need to be checked, it has a time complexity of `O(N)`.
+
 ### Q4
+
+Refer to `chapter-20-find-highest-product.py` for a working example.
+
+The solution iterates through the array once using a greedy algorithm to find the two highest and two lowest numbers (as the product of two negative numbers is positive), then determines the products of each and returns the greatest one.
 
 ### Q5
 
+Refer to `order-body-temperatures.py` for a working example.
+
+The solution requires:
+
+- `N` steps to populate the hashtable
+- `21` steps, one per temperature step
+  - Each step will run the inner loop if a value is found
+  - However, the inner loop will only run `N` times in total
+
+This gives a total of `2N + 21` steps, which yields a time complexity of `O(N)`.
+
 ### Q6
+
+Refer to `find-longest-consecutive-sequence.py` for two working examples. The second is the official solution, but the runtime is similar. The first works, but iterates from the minimum number in the array to the maximum, meaning that it could perform lots of unnecessary operations.
+
+The solution requires:
+
+- `N` steps to populate the hashtable
+- About `N` steps to iterate through the array
+- About `N` steps to iterate through the sequences (`N` steps in total, as we only build sequences from the array)
+
+This gives a total of approximately `3N` steps, which yields a time complexity of `O(N)`.
